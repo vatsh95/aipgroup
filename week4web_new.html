@@ -1,9 +1,8 @@
 <!doctype html>
-<html ng-app="store">
+<html ng-app="movieRecommendation">
 <head>
 <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
-	<link href="main.css" rel="stylesheet" type="text/css">
 <title>Untitled Document</title>
 <style>
 table, th, td {
@@ -23,6 +22,10 @@ table, th, td {
 			<tr>
 				<th>Title</th>
 				<th id="mvTitle">{{product.name}}</th>
+			</tr>
+			<tr>
+				<td>Title</td>
+				<td><input type="text" ng-value="{{product.name}}"></td>
 			</tr>
 			<tr>
 				<th>Release date</th>
