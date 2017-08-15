@@ -13,6 +13,22 @@ var app=angular.module('movieRecommendation',[]);
         $qProvider.errorOnUnhandledRejections(false);
     }]);
 */
+app.directive('datepicker', function () {
+return {
+    restrict: 'C',
+    require: 'ngModel',
+     link: function (scope, element, attrs, ngModelCtrl) {
+            $(element).datepicker({
+                dateFormat: 'dd, MM, yy',
+                onSelect: function (date) {
+                    scope.date = date;
+                    scope.$apply();
+                }
+            });
+        }    
+    };
+});
+
     var dataId = '';
 
     app.controller('MovieController', function($scope, $http) {
@@ -33,6 +49,11 @@ var app=angular.module('movieRecommendation',[]);
 
         $scope.addMovie = function(newMovie) {
 
+            if($scope.newMovieName == "" || $scope.newMovieName == null){
+                alert("Please fill out movie title");
+                return;
+            }
+
             var data = {
 //                id: app.dataId,
                 name: $scope.newMovieName,
@@ -49,9 +70,10 @@ var app=angular.module('movieRecommendation',[]);
                 method: 'POST',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
-            }).then(function (response) {})
+            }).then(function (response) {
+                window.location.reload();
+            })
                 .catch(function (err) {});
-
         };
     });
 

@@ -75,7 +75,7 @@ router.put('/movie/:id', function(req, res, next){
 });
 */
 
-router.put('/movies/update', function(req, res, next){
+router.post('/movies/update', function(req, res, next){
     console.log("update movie is called");
 //    res.send('Task API');
     // Website you wish to allow to connect
