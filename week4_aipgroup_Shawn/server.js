@@ -7,9 +7,10 @@ var tasks = require('./routes/tasks');
 var movie = require('./routes/movies');
 var update = require('./routes/updates');
 
-var port = 3000;
+var port = 3001;
 
 var app = express();
+
 
 //View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -47,8 +48,10 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static('views'));
-
-
-app.listen(port, function(){
-    console.log('Server started on port'+port);
-});
+try {
+    app.listen(port, function(){
+        console.log('Server started on port'+port);
+    })
+} catch (e) {
+    console.log('There was an error', e);
+}

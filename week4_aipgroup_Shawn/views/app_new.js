@@ -49,9 +49,11 @@ var app=angular.module('movieRecommendation',[]);
                 method: 'POST',
                 data: data,
                 headers: {'Content-Type': 'application/json'}
-            }).then(function (response) {})
-                .catch(function (err) {});
+            }).then(function (response) {
+                window.location.reload();
 
+            })
+                .catch(function (err) {});
         };
     });
 
